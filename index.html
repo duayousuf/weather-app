@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloft — Weather, read plainly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">ALOFT<span class="dot">·</span><small>Local sky readout</small></div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search-input" type="text" placeholder="Search any city or country…" autocomplete="off">
+      <div class="spinner" id="search-spinner"></div>
+      <div id="suggestions"></div>
+    </div>
+
+    <button class="icon-btn" id="locate-btn" title="Use current location">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+    </button>
+
+    <div class="unit-toggle">
+      <button id="unit-c" class="active">°C</button>
+      <button id="unit-f">°F</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero" id="hero">
+  <div class="hero-scene" id="hero-scene"></div>
+
+  <div class="hero-skeleton" id="hero-skeleton">
+    <div class="sk-line sk-w1"></div>
+    <div class="sk-line sk-w2"></div>
+    <div class="sk-big"></div>
+  </div>
+
+  <div class="hero-overlay" id="hero-overlay">
+    <div class="hero-top">
+      <div>
+        <div class="place-name" id="place-name">—</div>
+        <div class="place-meta" id="place-meta">—</div>
+      </div>
+      <div class="condition-badge" id="condition-badge"></div>
+    </div>
+    <div class="hero-bottom">
+      <div class="temp-readout">
+        <span class="num" id="temp-num">—</span>
+        <span class="unit" id="temp-unit">°</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="label">Feels like</div><div class="val" id="feels-like">—</div></div>
+        <div class="hero-stat"><div class="label">High / Low</div><div class="val" id="hi-lo">—</div></div>
+        <div class="hero-stat"><div class="label">Updated</div><div class="val" id="updated-at">—</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-status" id="hero-status">Finding your sky…</div>
+</div>
+
+<section id="hourly-section">
+  <div class="section-head">
+    <div class="section-title">Next 24 hours</div>
+    <div class="section-sub" id="hourly-sub"></div>
+  </div>
+  <div class="hourly-strip" id="hourly-strip"></div>
+</section>
+
+<section id="daily-section">
+  <div class="section-head">
+    <div class="section-title">7-day outlook</div>
+    <div class="section-sub">Low → High</div>
+  </div>
+  <div class="daily-list" id="daily-list"></div>
+</section>
+
+<section id="detail-section">
+  <div class="section-head">
+    <div class="section-title">Conditions</div>
+  </div>
+  <div class="detail-grid" id="detail-grid"></div>
+</section>
+
+<footer>
+  <div>Live data from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> · Location by <a href="https://www.bigdatacloud.com" target="_blank" rel="noopener">BigDataCloud</a></div>
+  <div id="tz-note">—</div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
